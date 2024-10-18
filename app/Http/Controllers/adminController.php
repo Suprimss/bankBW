@@ -20,15 +20,36 @@ class adminController extends Controller
     public function dashboard(){
         return view('admin.dashboard');
     }
+    
+    
+    
+    //acc
+    
+    public function editAcc(Request $request)
+    {
+        // dd(Hashids::decode($request->id));
+        $acc = User::where('id',Hashids::decode($request->id))->first();
+        // dd($acc);
+        
+        return view('admin.edit_account', compact('acc'));
+    }
+    
     public function account()
     {
         $users = User::all();
         return view('admin.account', compact('users'));
     }
+    public function searchAccount(Request $request){
+        $query = $request->input('query');;
+        // dd($request->query());
+        $searchBy = $request->input('search_by');
+        $query = $request->input('query');
+        
+        $users = User::where($searchBy, 'LIKE', "%{$query}%")->get();
+        return view('admin.account',compact('users'));
+    }
 
 
-
-    //acc
     public function createAcc()
     {
         return view('admin.create_account');
@@ -60,14 +81,6 @@ class adminController extends Controller
         return redirect(route('admin.account'))->with('success', "account {$request->name}   berhasil dibuat!");
     }
 
-    public function editAcc(Request $request)
-    {
-        // dd(Hashids::decode($request->id));
-        $acc = User::where('id',Hashids::decode($request->id))->first();
-        // dd($acc);
-        
-        return view('admin.edit_account', compact('acc'));
-    }
     
     public function updateAcc(Request $request)
     {   
@@ -122,7 +135,18 @@ class adminController extends Controller
     //transaction
     
     public function HistoryTransactions(){
-        $Log=transaction::latest()->get();;
+        $Log=transaction::latest()->get();
+        // ->paginate(10);
+        return view('admin.transactionsLog',compact('Log'));
+    }
+
+    public function searchtransactions(Request $request){
+        $query = $request->input('query');;
+        // dd($request->query());
+        $searchBy = $request->input('search_by');
+        $query = $request->input('query');
+        
+        $Log = transaction::where($searchBy, 'LIKE', "%{$query}%")->latest()->get();
         return view('admin.transactionsLog',compact('Log'));
     }
 
@@ -141,11 +165,7 @@ class adminController extends Controller
         return view('admin.transactionsForm',compact('action','acc'));
     }
  
-    public function struk(Request $request){
-        $transaction=transaction::where('id', $request->id )->first();
-        // dd($transaction);
-        return view('admin.recipt',compact('transaction'));
-    }
+    
 
     public function TransactionAction(Request $request){
         

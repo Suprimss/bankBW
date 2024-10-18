@@ -17,6 +17,18 @@
             }, 5000); 
         </script>
     @endif    
+                <form action="{{ route('admin.searchAccount') }}" method="GET" class="d-flex ml-2" style="width: 300px;">
+                  <select id="searchBy" name="search_by" class="btn btn-primary dropdown-toggle" onchange="changeInputType()">
+                      <option value="id">ID</option>
+                      <option value="name">Name</option>
+                      <option value="email">Email</option>
+                      <option value="class">Class</option>
+                      <option value="role">role</option>
+                      
+                  </select>
+                  <input type="text" id="searchQuery" name="query" placeholder="Search..." class="form-control">
+                  <button type="submit" class="btn btn-primary">Search</button>
+              </form>
               <div class="d-flex justify-content-between">
               <h5 class="card-title">Account info</h5>
               <a class="btn btn-primary mb-2"  href="{{ route('admin.createAcc') }}" >create account</a>

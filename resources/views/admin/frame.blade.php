@@ -20,8 +20,8 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/logo-light.svg" alt="" />
+          <a href="{{ route('dashboard') }}" class="text-nowrap logo-img">
+            <img src="../assets/images/logos/Bw2.png" alt="" style="width: 100%;"/>
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -35,16 +35,34 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{ route('admin.dashboard') }}" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
                 <span>
                   <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
                 </span>
                 <span class="hide-menu">Dashboard</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{ route('history') }}" aria-expanded="false">
+                <span>
+                  <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
+                </span>
+                <span class="hide-menu">Youre History </span>
+              </a>
+            </li>
+            @if(Auth::user()->role == 'admin')
+            
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
               <span class="hide-menu">admin panel</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{ route('admin.dashboard') }}" aria-expanded="false">
+                <span>
+                  <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
+                </span>
+                <span class="hide-menu">Dashboard</span>
+              </a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('admin.transactions') }}" aria-expanded="false">
@@ -54,14 +72,7 @@
                 <span class="hide-menu">transactionss</span>
               </a>
             </li>
-            <!-- <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
-                <span>
-                  <iconify-icon icon="solar:danger-circle-bold-duotone" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">tarik uang</span>
-              </a>
-            </li> -->
+
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('admin.account') }}" aria-expanded="false">
                 <span>
@@ -78,6 +89,7 @@
                 <span class="hide-menu">history aktivitas</span>
               </a>
             </li>
+            @endif
 
           </ul>
          
@@ -115,14 +127,14 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="{{ route('profile.edit') }}" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a  class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-mail fs-6"></i>
                       <p class="mb-0 fs-3">{{ Auth::user()->name }}</p>
                     </a>
                     <!--logout-->
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" href="{{ route('logout') }}"   class="btn btn-outline-primary mx-3 mt-2 d-block" >Logout</button>
+                    <button type="submit" class="btn btn-outline-primary mx-3 mt-2 d-block" >Logout</button>
 
                     </form>
 
@@ -146,9 +158,7 @@
             </div>
         </div>
         <div class="py-6 px-6 text-center">
-          <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
-              class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="https://themewagon.com/" target="_blank"
-              class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
+          <p class="mb-0 fs-4">This Web Aplication Developedd by Prima</p>
         </div>
       </div>
     </div>

@@ -5,6 +5,23 @@
 @section('content')        
               <div class="d-flex justify-content-between">
               <h5 class="card-title">Transaction History</h5>
+
+
+              @if(Auth::user()->role == 'admin')
+              <!-- Search Bar -->
+              <form action="{{ route('admin.searchTransactions') }}" method="GET" class="d-flex">
+                  <select id="searchBy" name="search_by" class="btn btn-primary dropdown-toggle" onchange="changeInputType()">
+                      <option value="id">ID</option>
+                      <option value="userId">User ID</option>
+                      <option value="name">Name</option>
+                      <option value="class">Class</option>
+                      <option value="admin">Admin</option>
+                      <option value="created_at">Date</option>
+                  </select>
+                  <input type="text" id="searchQuery" name="query" placeholder="Search..." class="form-control">
+                  <button type="submit" class="btn btn-primary">Search</button>
+              </form>
+              @endif
               </div>
               <div class="table-responsive">
                 <table class="table text-nowrap align-middle mb-0">
@@ -46,8 +63,27 @@
                         
                       </tr>
                   @endforeach
+                  
                   </tbody>
+                 
                 </table>
+                
               </div>
+              <div class="d-flex flex-column">
+            
+              </div>
+
+              <script>
+                function changeInputType() {
+                    var searchBy = document.getElementById('searchBy').value;
+                    var searchQuery = document.getElementById('searchQuery');
+
+                    if (searchBy === 'created_at') {
+                        searchQuery.type = 'date';
+                    } else {
+                        searchQuery.type = 'text';
+                    }
+                }
+            </script>
 @endsection
 

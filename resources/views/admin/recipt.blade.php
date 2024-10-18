@@ -39,7 +39,11 @@
 </div>
 </div>
 <hr style="text-align:left;margin-left:0">
+@if(Auth::user()->role == 'admin')
 <a href="{{ route('admin.HistoryTransactions') }}" class="btn btn-success ">Back</a>
+@else
+<a href="{{ route('history') }}" class="btn btn-success ">Back</a>
+@endif
 <button onclick="window.print()" class="btn btn-success ">Print</button>
 
 @endsection
