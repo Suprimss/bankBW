@@ -21,17 +21,17 @@
     <H5>{{ $transaction->name }}</H5>
 </div>
 <div class="d-flex justify-content-between">
-    <h5>Nominal Sebelum</h5>
-    <H5>{{ $transaction->oldBalance }}</H5>
+    <h5>saldo Sebelum</h5>
+    <H5>Rp. {{ $transaction->oldBalance }}</H5>
 </div>
 <div class="d-flex justify-content-between">
     <h5>Nominal Transaksi</h5>
-    <H5>{{ $transaction->amount }}<hr style="margin: 0;"></H5>
+    <H5>Rp. {{ $transaction->amount }}<hr style="margin: 0;"></H5>
     
 </div>
 <div class="d-flex justify-content-between">
     <h5>Saldo Akhir</h5>
-    <H5>{{ $transaction->NewBalance }}</H5>
+    <H5>Rp. {{ $transaction->NewBalance }}</H5>
 </div>
 <hr style="text-align:left;margin-left:0">
 <div>

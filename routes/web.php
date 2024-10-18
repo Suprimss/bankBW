@@ -37,6 +37,7 @@ Route::middleware(['admin','admin'])->group(function(){
         Route::get('admin/edit{id}',[adminController::class, 'editAcc'])->name('admin.editAcc');
         Route::post('admin/edit',[adminController::class, 'updateAcc'])->name('admin.updtAcc');
         //transaction
+        Route::get('admin/searchTransactionAccount',[adminController::class, 'searchTransactionAccount'])->name('admin.searchTransactionAccount');
         Route::get('admin/transactionsSearch',[adminController::class, 'searchtransactions'])->name('admin.searchTransactions');
         Route::get('admin/transactions',[adminController::class, 'transactions'])->name('admin.transactions');
         Route::get('admin/historytransaction',[adminController::class,'HistoryTransactions'])->name('admin.HistoryTransactions');

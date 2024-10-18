@@ -40,11 +40,10 @@ class adminController extends Controller
         return view('admin.account', compact('users'));
     }
     public function searchAccount(Request $request){
-        $query = $request->input('query');;
+        $query = $request->input('query');
         // dd($request->query());
         $searchBy = $request->input('search_by');
-        $query = $request->input('query');
-        
+
         $users = User::where($searchBy, 'LIKE', "%{$query}%")->get();
         return view('admin.account',compact('users'));
     }
@@ -153,6 +152,18 @@ class adminController extends Controller
     public function transactions(){
         $users = User::where('role', 'user')->get();
         return view('admin.transactions', compact('users'));
+    }
+    
+    public function searchTransactionAccount(Request $request){
+        $query = $request->input('query');;
+        $searchBy = $request->input('search_by');
+
+
+
+        $users = User::where('role', 'user')
+            ->where($searchBy,$query)
+            ->get();
+            return view('admin.transactions', compact('users'));
     }
     
     public function formTransaction(Request $request){

@@ -6,7 +6,19 @@
 
 
               <div class="d-flex justify-content-between">
-              <h5 class="card-title">Account info</h5>
+              <h5 class="card-title">Transaction</h5>
+              <form action="{{ route('admin.searchTransactionAccount') }}" method="GET" class="d-flex ml-2" style="width: 300px;">
+                  <select id="searchBy" name="search_by" class="btn btn-primary dropdown-toggle" onchange="changeInputType()">
+                      <option value="id">ID</option>
+                      <option value="name">Name</option>
+                      <option value="email">Email</option>
+                      <option value="class">Class</option>
+                      <option value="role">role</option>
+                      
+                  </select>
+                  <input type="text" id="searchQuery" name="query" placeholder="Search..." class="form-control">
+                  <button type="submit" class="btn btn-primary">Search</button>
+              </form>
               </div>
               <div class="table-responsive">
                 <table class="table text-nowrap align-middle mb-0">
