@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');   
     Route::get('adminrecipt/{id}',[UserContoller::class,'struk'])->name('admin.recipt');
 });
-Route::middleware(['admin','admin'])->group(function(){
+Route::middleware(['auth','admin'])->group(function(){
         //view
         Route::get('admin/dashboard',[adminController::class, 'dashboard'])->name('admin.dashboard');
         //acc
