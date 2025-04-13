@@ -1,7 +1,5 @@
 **School Bank Project: Empowering BW 2 Through Digitalization**
 
-This project is an initiative to create a modern and educational **school banking application**. With a vision to enhance financial literacy, this application is designed to give students hands-on experience with banking systems while fostering collaboration and innovation. Moreover, I aim to contribute to the **digitalization of BW 2**, integrating cutting-edge technology into education to deliver a more dynamic and effective learning environment.
-
 **Why This Project Matters?**
 1. It provides a fundamental understanding of financial systems.
 2. It promotes teamwork and creative thinking among students.
